@@ -1,0 +1,80 @@
+/* ベーススタイル */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f3f4f6; /* 優しい灰色の背景 */
+    margin: 0;
+    padding: 20px;
+}
+
+/* 見出し */
+h1 {
+    color: #4caf50; /* 明るい緑色で成功を示唆 */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* 説明文 */
+p {
+    color: #333; /* 黒に近い落ち着いた色 */
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* ボタンリンク */
+a {
+    text-decoration: none; /* デフォルトの下線を削除 */
+}
+
+a button {
+    background-color: #007bff; /* 鮮やかな青色 */
+    color: white; /* 白文字 */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none; /* 枠線を削除 */
+    border-radius: 5px; /* 少し角を丸く */
+    cursor: pointer; /* ホバー時にポインターに変更 */
+}
+
+/* ボタンホバー時 */
+a button:hover {
+    background-color: #0056b3; /* 少し濃い青に変更 */
+}
+
+/* --- レスポンシブ対応 --- */
+
+/* スマートフォン用 (最大幅600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* タブレット用 (最大幅1024px) */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    a button {
+        font-size: 15px;
+        padding: 9px 18px;
+    }
+}

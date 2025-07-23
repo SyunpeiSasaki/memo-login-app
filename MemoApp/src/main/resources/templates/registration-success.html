@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>登録成功</title>
+        <link rel="stylesheet" href="/styles.css"> <!-- CSSファイルへのリンク -->
+    </head>
+
+    <body>
+        <h1 th:text="${message}">登録完了メッセージ</h1>
+        <p>リスト画面に移動する場合は、以下のボタンをクリックしてください。</p>
+        <a href="/home">
+            <button>リスト画面へ</button>
+        </a>
+    </body>
+</html>
+

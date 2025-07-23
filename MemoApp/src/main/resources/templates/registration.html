@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>アカウント登録</title>
+        <link rel="stylesheet" th:href="@{/css/registration.css}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="top">
+                <h1 class="memo_ttl">メモ帳</h1>
+            </header>
+
+            <main class="container">
+                <div class="form_wrapper">
+                    <h2 class="form_ttl">アカウント登録</h2>
+
+                    <form th:action="@{/registration}" method="post" th:object="${user}">
+                        <!-- エラーメッセージ表示 -->
+                        <div th:if="${error}" class="error_message" th:text="${error}" style="color: red;"></div>
+                        <div th:if="${message}" class="success_message" th:text="${message}" style="color: green;"></div>
+
+                        <div class="form_group">
+                            <label for="name">氏名</label>
+                            <input type="text" id="name" th:field="*{name}" placeholder="氏名を入力してください" required />
+                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error_message"></div>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" th:field="*{email}" placeholder="メールアドレスを入力してください" required />
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error_message"></div>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="password">パスワード</label>
+                            <input type="password" id="password" th:field="*{password}" placeholder="パスワードを入力してください" required />
+                            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error_message"></div>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="confirmPassword">パスワード確認用</label>
+                            <input type="password" id="confirmPassword" th:field="*{confirmPassword}" placeholder="パスワードを再入力してください" required />
+                            <div th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error_message"></div>
+                        </div>
+
+                        <button type="submit" class="submit">新規登録</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

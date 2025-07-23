@@ -1,0 +1,109 @@
+package com.example.registrationapp.controller;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.registrationapp.entity.Memo;
+import com.example.registrationapp.entity.User;
+import com.example.registrationapp.service.MemoService;
+import com.example.registrationapp.service.UserService;
+
+@Controller
+@RequestMapping("/memo") // ✅ すべてのメモ関連 API を `/memo` に統一
+public class MemoController {
+
+    @Autowired
+    private MemoService memoService;
+
+    @Autowired
+    private UserService userService;
+
+    // ✅ メモ作成ページの表示（新規作成）
+    @GetMapping("/create")
+    public String showCreateMemoPage(Model model) {
+        model.addAttribute("memo", new Memo());
+        return "memo_create"; 
+    }
+
+    // ✅ メモ編集ページの表示（ID指定）
+    @GetMapping("/create/{id}")
+    public String showCreateMemoPage(@PathVariable Long id, Model model) {
+        Memo memo = memoService.findById(id);
+
+        if (memo == null) { // ✅ メモが存在しない場合は 404 を防ぐ
+            System.out.println("メモが見つかりません: ID = " + id);
+            return "redirect:/memo/home";
+        }
+
+        model.addAttribute("memo", memo);
+        return "memo_create"; 
+    }
+
+    // ✅ メモの登録処理（ログイン中ユーザーに紐づける）
+    @PostMapping("/create")
+    public String processCreateMemo(@Valid @ModelAttribute("memo") Memo memo,
+                                    BindingResult result,
+                                    @AuthenticationPrincipal UserDetails userDetails,
+                                    Model model) {
+        System.out.println("メモ作成処理開始");
+
+        if (result.hasErrors()) {
+            model.addAttribute("error", "タイトルと内容は必須です");
+            System.out.println("メモ作成エラー: " + result.getAllErrors());
+            return "memo_create"; 
+        }
+
+        String username = userDetails.getUsername();
+        User user = userService.findByName(username);
+
+        if (user == null) {
+            model.addAttribute("message", "ログイン情報を取得できません。再度ログインしてください");
+            System.out.println("ユーザー情報の取得失敗");
+            return "login";
+        }
+
+        memo.setCreatedAt(LocalDateTime.now());
+        memo.setUser(user);
+
+        System.out.println("保存前のメモ: " + memo);
+
+        try {
+            memoService.saveMemo(memo);
+            System.out.println("メモを保存しました: ID = " + memo.getId());
+        } catch (Exception e) {
+            System.out.println("メモ保存時の例外発生: " + e.getMessage());
+            model.addAttribute("error", "メモの保存時に問題が発生しました");
+            return "memo_create";
+        }
+
+        return "redirect:/memo/home"; 
+    }
+
+    // ✅ メモ一覧表示
+    @GetMapping("/home")
+    public String showMemoList(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        User user = userService.findByName(username);
+
+        List<Memo> memoList = memoService.getMemosByUserId(user.getId()); 
+
+        System.out.println("取得したメモリスト: " + memoList);
+
+        model.addAttribute("memoList", memoList);
+        return "memo_home"; 
+    }
+}

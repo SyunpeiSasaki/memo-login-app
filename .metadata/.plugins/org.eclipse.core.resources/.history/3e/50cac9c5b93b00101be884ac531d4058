@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ホーム</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="top">
+            <h1 class="memo_ttl">メモ帳</h1>
+        </header>
+        <main class="container">
+            <div class="content">
+                <h2 class="content_ttl">一覧</h2>
+
+                <!-- ✅ スクロール可能なラッパー -->
+                <div>
+                    <!-- ✅ メモが存在する場合にのみ表示 -->
+                    <ul class="memo_list" th:if="${memoList != null && !#lists.isEmpty(memoList)}">
+                        <li class="memo_item" th:each="memo : ${memoList}">
+                            <!-- ✅ メモデータの適用 -->
+                            <a th:href="@{/show/{id}(id=${memo.id})}" class="memo_link">
+                                <div class="title" th:text="${memo.title}">タイトル</div>
+                                <div class="created_at" th:if="${memo.createdAt != null}" th:text="${#temporals.format(memo.createdAt, 'yyyy/MM/dd')}">作成日</div>
+                                <div class="text" th:text="${memo.content}">本文</div>
+                                <div class="category" th:if="${memo.category != null}" th:text="${memo.category}">カテゴリ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <a class="submit1" th:href="@{/create}">新規追加</a>
+                <ul>
+                    <li><a th:href="@{/home}">一覧</a></li>
+                    <li><a href="#">ユーザー情報</a></li>
+                </ul>
+				<form th:action="@{/logout}" method="post">
+                     <a class="submit2" th:href="@{/logout}">ログアウト</a>
+				</form>
+				<a class="submit3" th:href="@{/registration}">新規登録</a>
+				<div class="copyright">
+					 <p>&copy; 2024</p>
+				</div>
+            </aside>
+        </main>
+    </div>
+</body>
+</html>

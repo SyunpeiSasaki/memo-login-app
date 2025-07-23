@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+/* ✅ 全体設定 */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+}
+
+/* ✅ ヘッダー */
+.top {
+    background: #D9D9D900;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    font-weight: 700;
+}
+
+.memo_ttl {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    margin: 28px 0 27px 25px;
+}
+
+/* ✅ メインコンテンツのコンテナ */
+.container {
+    display: flex;
+    height: calc(100vh - 100px);
+    flex-direction: row-reverse; /* ✅ サイドバーを右側に配置 */
+}
+
+/* ✅ コンテンツ部分 */
+.name, .category, span {
+    margin-right: 1ch; /* ✅ 1文字分のスペースを確保 */
+}
+
+
+.info-container {
+    margin-top: -30px; /* ✅ 上から30pxだけ下げる */
+}
+
+.content {
+    background: #D9D9D9;
+    width: 82%;
+    padding: 30px; /* ✅ 内側の余白を追加 */
+    box-sizing: border-box;
+}
+
+.content_ttl {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* ✅ タイトルと編集ボタンを横並びに配置 */
+.title-container {
+    display: flex; /* ✅ 横並びに配置 */
+    align-items: center; /* ✅ 垂直方向の中央揃え */
+    justify-content: space-between; /* ✅ タイトルとボタンを左右分離配置 */
+    gap: 10px; /* ✅ タイトルとボタンの間隔 */
+    padding: 10px 0;
+}
+
+/* ✅ 編集ボタンのスタイル */
+.edit-button {
+	position: absolute; /* ✅ 絶対配置で固定 */
+	top: 130px; /* ✅ ヘッダーから 30px 下に配置 */
+	right:30px;
+	width: 200px;
+	display: block;
+}
+
+.edit-button button {
+    width: 100%; /* ✅ ボタンを最大幅に調整 */
+    padding: 8px;
+    color: #FFF;
+    border: 1px solid #000;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ✅ メモリスト */
+.memo_list {
+    margin: 0;
+    padding: 0 30px;
+    list-style: none;
+}
+
+.memo_item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+	max-width: 980px; /* ✅ 最大幅を980pxに設定 */
+	height: 262px; /* ✅ 高さを262pxに設定 */
+	border: 1px solid rgba(0, 0, 0, 0.3); /* ✅ 黒の薄い線（30%の透明度）を外枠に追加 */
+	box-sizing: border-box;
+}
+
+.memo_item .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.memo_item .created_at,
+.memo_item .text,
+.memo_item .category {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* ✅ メモの本文 */
+.memo_item .text {
+    font-size: 16px;
+    color: #000;
+}
+
+/* ✅ ボタンスタイル */
+.btn.btn-primary {
+    max-width: 200px;
+    margin: 0 0 0 auto;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* ✅ サイドバー部分 */
+.sidebar {
+    background: #E9E9E9;
+    width: 18%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.submit1 {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.submit2 {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.delete-link {
+    background: none; /* ✅ 背景なし */
+    border: none; /* ✅ 囲みなし */
+    color: red; /* ✅ 赤字に設定 */
+    font-size: 16px; /* ✅ 文字サイズを調整 */
+    padding: 0; /* ✅ 余白なし */
+    cursor: pointer; /* ✅ クリック可能に */
+    display: block; /* ✅ ブロック要素に */
+}
+
+.delete-form {
+    display: flex; /* ✅ フレックスボックスで右寄せ */
+    justify-content: flex-end; /* ✅ コンテンツを右端に配置 */
+}
+
+
+/* ✅ フッター部分 */
+p {
+    left: 20px;
+    bottom: 30px;
+    position: absolute;
+    font-size: 14px;
+}

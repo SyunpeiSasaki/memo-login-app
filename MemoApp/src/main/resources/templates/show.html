@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="'詳細 - ' + (${memo?.title ?: 'タイトルなし'})"></title> <!-- ✅ タイトルを表示 -->
+        <link rel="stylesheet" th:href="@{/css/show.css}"> <!-- ✅ 外部CSSに分離 -->
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- ヘッダー -->
+            <header class="top">
+                <h1 class="memo_ttl">メモ帳</h1>
+            </header>
+
+            <!-- メインコンテンツ -->
+            <main class="container">
+                <div class="content">
+                    <!-- ✅ タイトル・名前・カテゴリ・編集ボタンを横並び -->
+                    <div class="info-container" th:if="${memo != null}">
+                        <h2 class="content_ttl" th:text="${memo?.title ?: '詳細ページ'}"></h2>
+                        <span class="name" th:text=" (${memo?.user?.name ?: '不明'})"></span>
+                        <span class="category" th:text=" (${memo?.category ?: '未分類'})"></span>
+                        <span th:text="${memo?.createdAt != null ? #temporals.format(memo.createdAt, 'yyyy/MM/dd') : 'データなし'}"></span>
+                        
+                        <form th:action="@{/edit/{id}(id=${memo?.id})}" method="get" class="edit-button">
+                            <button type="submit" class="btn btn-primary">編集</button>
+                        </form>
+                    </div>
+
+                    <!-- メモがある場合のみ表示 -->
+                    <ul class="memo_list" th:if="${memo != null}">
+                        <li class="memo_item">
+                            <div class="text">
+                                <span th:text="${memo?.content ?: 'データなし'}"></span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- ✅ 削除ボタン（下のまま配置） -->
+                    <form th:action="@{/delete/{id}(id=${memo?.id})}" method="post" th:if="${memo != null}" class="delete-form">
+                        <button type="submit" class="delete-link">このメモを削除する</button>
+                    </form>
+
+                    <!-- メモが見つからない場合 -->
+                    <p th:unless="${memo}">指定されたメモが見つかりません。</p>
+                </div>
+
+                <!-- サイドバー -->
+                <aside class="sidebar">
+                    <form th:action="@{/create}" method="get">
+                        <button type="submit" class="submit1">新規追加</button>
+                    </form>
+                    
+                    <ul>
+                        <li><a th:href="@{/home}">一覧</a></li>
+                        <li><a href="#">ユーザー情報</a></li>
+                    </ul>
+
+                    <!-- ✅ ログアウトボタン -->
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="submit2">ログアウト</button>
+                    </form>
+
+                    <div class="copyright">
+                        <p>&copy; 2024</p>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </body>
+</html>

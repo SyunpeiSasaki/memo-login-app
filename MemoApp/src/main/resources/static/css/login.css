@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/* 全体の設定 */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+}
+
+/* ヘッダー */
+.top {
+    background: #D9D9D900;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    font-weight: 700;
+}
+
+.memo_ttl {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    margin: 28px 0 27px 25px;
+}
+
+/* メインコンテンツ */
+.container {
+    background: #D9D9D9;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    height: calc(100vh - 100px);
+}
+
+.form_wrapper {
+    background: #FFFFFF;
+    width: 600px;
+    height: 310px; 
+    padding: 21px 20px 20px;
+}
+
+.form_ttl {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 25px;
+}
+
+/* エラーメッセージ */
+.error_message {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center; /* 中央揃え */
+}
+
+/* ログアウトメッセージ */
+.logout_message {
+    color: green;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center; /* 中央揃え */
+}
+
+/* フォームの入力 */
+.form_group {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+label {
+    font-weight: 700;
+    display: block; /* ブロック要素化 */
+    margin-bottom: 8px; /* ラベルの下にスペースを追加 */
+}
+
+.form_group input[type="email"],
+.form_group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form_group input[type="email"]:focus,
+.form_group input[type="password"]:focus {
+    border-color: #007BFF; /* フォーカス時の色を追加 */
+    outline: none;
+}
+
+/* ログインボタン */
+.submit {
+    display: block;
+    width: 200px;
+    padding: 8px 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 32px auto 0;
+    text-align: center;
+}
+
+.submit:hover {
+    background-color: #007BFF; /* ホバー時の背景色 */
+    color: #FFFFFF; /* ホバー時の文字色 */
+}
