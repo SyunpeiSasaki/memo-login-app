@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* 全体 */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+}
+
+/* ヘッダー */
+.top {
+    background:  #D9D9D900;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    font-weight: 700;
+}
+
+.memo_ttl {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    margin: 28px 0 27px 25px;
+}
+
+/* メインコンテンツ */
+.container {
+    display: flex;
+    height: calc(100vh - 100px);
+    flex-direction: row-reverse;
+}
+
+.content {
+    background:  #D9D9D9;
+    width: 82%;
+}
+
+.content_ttl {
+    padding: 30px 0 25px 30px;
+}
+
+/* メモリスト */
+.memo_list {
+    margin: 0 30px;
+}
+
+/* 編集フォーム */
+.edit_form {
+    border-radius: 10px;
+    margin: 0 30px;
+}
+
+.form_group {
+    margin-bottom: 15px;
+}
+
+.form_group label {
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form_group input, .form_group textarea, .form_group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submit_button {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 15px;
+	margin: 0 auto;
+}
+
+/* サイドバー */
+.sidebar {
+    background: #E9E9E9;
+    width: 18%;
+    padding: 30px 20px;
+}
+
+.submit1, .submit2 {
+    display: block;
+    padding: 8px 8px;
+    margin: 30px auto;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+	text-align: center;
+}
+
+li {
+    list-style: none; 
+}
+
+
+a {
+    text-decoration: none;
+}
+
+p {
+    left: 20px;
+    bottom: 30px;
+    position: absolute;
+}

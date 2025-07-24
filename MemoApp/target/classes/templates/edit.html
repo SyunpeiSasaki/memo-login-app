@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>メモ編集</title>
+        <link rel="stylesheet" th:href="@{/css/edit.css}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <header class="top">
+                <h1 class="memo_ttl">メモ帳</h1>
+            </header>
+
+            <main class="container">
+                <div class="content">
+                    <h2 class="content_ttl">編集</h2>
+
+                    <!-- 編集フォーム -->
+                    <form th:action="@{/edit/{id}(id=${memo?.id})}" method="post" class="edit_form">
+                        <div class="form_group">
+                            <label for="title">タイトル</label>
+                            <input type="text" id="title" name="title" th:value="${memo?.title ?: ''}" required>
+                        </div>
+                        
+                        <div class="form_group">
+                            <label for="content">本文</label>
+                            <textarea id="content" name="content" required th:text="${memo?.content ?: ''}"></textarea>
+                        </div>
+                        
+                        <div class="form_group">
+                            <label for="category">カテゴリ</label>
+                            <select id="category" name="category">
+                                <option th:selected="${memo?.category == '仕事'}" value="仕事">仕事</option>
+                                <option th:selected="${memo?.category == 'プライベート'}" value="プライベート">プライベート</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit_button">更新</button>
+                    </form>
+                </div>
+
+                <aside class="sidebar">
+                    <a class="submit1" th:href="@{/memo/create}">新規追加</a>
+                    <ul>
+                        <li><a th:href="@{/home}">一覧</a></li>
+                        <li><a href="#">ユーザー情報</a></li>
+                    </ul>
+                    <a class="submit2" th:href="@{/logout}">ログアウト</a>
+                    
+                    <div class="copyright">
+                        <p>&copy; 2024</p>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </body>
+</html>

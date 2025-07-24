@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+/* 全体 */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+    width: 100%;
+	background:#FFFFFF ;
+}
+
+/* header */
+.top {
+    background: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    font-weight: 700;
+}
+
+.memo_ttl {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    line-height: 45px;
+    margin: 28px 0 27px 25px;
+}
+
+/* main */
+.container {
+    display: flex;
+    height: calc(100vh - 100px);
+    flex-direction: row-reverse;
+}
+
+.content {
+    background: #D9D9D9;
+    width: 82%;
+}
+
+.content_ttl {
+	font-size: 30px;
+	font-weight: 700;
+	color: #000000;
+	line-height: 45px;
+	margin: 28px 0 27px 25px;
+}
+
+/* ✅ スクロール用のラッパー (スクロールバーを非表示に変更) */
+.memo_list_wrapper {
+    overflow-y: auto; /* メモリストのスクロールを有効化 */
+    height: calc(100vh - 120px); 
+}
+
+.memo_list {
+	max-height: 500px; /* ✅ メモリストの最大高さを制限 */
+	overflow-y: auto; /* ✅ 画面に入りきらないメモをスクロール表示 */
+	background: #FFFFFF;
+	margin: 0 30px;
+	padding: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.memo_item {
+    border-bottom: 1px solid #000000; /* ✅ 罫線を追加 */
+    position: relative;
+    padding: 10px 0; /* 下に余白を追加 */
+}
+
+.memo_link {
+    display: block;
+}
+
+/* タイトル */
+.title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	max-width: 80%;
+}
+
+/* 作成日 */
+.created_at {
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+/* 本文 */
+.text {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    line-height: 1.5;
+    max-height: calc(1.5em * 2);
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+    padding-right: 10px;
+	text-overflow: ellipsis; 
+	padding-right: 100px;
+	display: -webkit-box;
+	    -webkit-line-clamp: 2;
+	    -webkit-box-orient: vertical;
+}
+
+/* カテゴリ */
+.category {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* サイドバー */
+.sidebar {
+    background: #E9E9E9;
+    width: 18%;
+    padding: 30px 20px;
+}
+
+.submit1, .submit2, .submit3 {
+    display: block;
+    padding: 8px 8px;
+    margin: 0 auto 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+}
+
+.submit2 {
+    margin-top: 30px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+}
+
+/* メディアクエリ */
+@media screen and (max-width: 768px) {
+    .top {
+        max-height: 70px;
+    }
+
+    .memo_ttl {
+        font-size: 20px;
+        margin: 20px 0 20px 10px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .content {
+        width: 100%;
+        height: 75%;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+
+    .memo_list {
+        margin: 0 10px;
+    }
+
+    .title,
+    .text {
+        padding-right: 10px;
+    }
+
+    .created_at,
+    .category {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        text-align: right;
+    }
+}

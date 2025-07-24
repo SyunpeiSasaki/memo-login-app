@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+/* 全体設定 */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F9F9;
+}
+
+.wrapper {
+    max-width: 100%;
+}
+
+/* header */
+.top {
+    background: #D9D9D900;
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    font-weight: 700;
+}
+
+.memo_ttl {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    margin: 28px 0 27px 25px;
+}
+
+/* mainコンテナ */
+.container {
+    display: flex;
+    height: calc(100vh - 100px);
+    flex-direction: row-reverse;
+}
+
+.content {
+    background: #D9D9D9;
+    width: 82%;
+    padding: 30px;
+}
+
+.content_ttl {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* フォームスタイル */
+form {
+    padding: 30px;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 120px;
+}
+
+button {
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	margin-top: 30px;
+	max-width: 200px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #E9E9E9;
+}
+
+/* sidebar */
+.sidebar {
+    background: #E9E9E9;
+    width: 18%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+}
+
+.sidebar .submit1, .sidebar .submit2 {
+    display: block;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.sidebar .submit1:hover, .sidebar .submit2:hover {
+    background-color: #D9D9D9;
+}
+
+/* リスト */
+li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+p {
+	left: 20px;
+	bottom: 30px;
+	position:absolute;
+}
