@@ -28,6 +28,7 @@
    `src/main/java/com/example/registrationapp/MemoappApplication.java` を右クリック → Run As → Java Application
 
 3. 起動後、ブラウザで以下にアクセス  
-   [http://localhost:8080/login](http://localhost:8080/login)
-
+http://localhost:8080/home にアクセスすると、各機能のページへ移動できます。
+現在、ログイン認証および新規登録機能は修正中のため、セキュリティは一時的に解除しています。
+そのため、現時点では認証なしで全ページにアクセス可能な状態です。
 
